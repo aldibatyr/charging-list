@@ -17,9 +17,7 @@
       "fallbackToCacheTimeout": 0
     },
     "jsEngine": "hermes",
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "android": {
       "icon": "./assets/images/app-icon-android-legacy.png",
       "package": "com.charginglist",
@@ -67,7 +65,8 @@
           }
         }
       ],
-      "expo-font"
+      "expo-font",
+      "expo-router"
     ],
     "experiments": {
       "tsconfigPaths": true
