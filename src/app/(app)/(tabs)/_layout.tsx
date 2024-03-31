@@ -35,7 +35,7 @@ export default observer(function Layout() {
           ),
         }}
       />
-      {/* <Tabs.Screen
+      <Tabs.Screen
         name="list"
         options={{
           href: "/list",
@@ -45,7 +45,7 @@ export default observer(function Layout() {
             <Entypo name="list" size={30} color={focused ? colors.tint : undefined} />
           ),
         }}
-      /> */}
+      />
       {__DEV__ && (
         <Tabs.Screen
           name="debug"

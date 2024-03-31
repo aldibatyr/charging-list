@@ -132,6 +132,9 @@ const fr: Translations = {
     stalls: "{{count}} stands",
     navigate: "Naviguer",
   },
+  locations: {
+    empty: "Aucun emplacement",
+  },
 }
 
 export default fr

@@ -1,4 +1,6 @@
-const ru = {
+import { Translations } from "./en"
+
+const ru: Translations = {
   common: {
     ok: "OK!",
     cancel: "Отмена",
@@ -129,7 +131,9 @@ const ru = {
     stalls: "{{count}} постов",
     navigate: "Перейти",
   },
+  locations: {
+    empty: "Нет доступных мест",
+  },
 }
 
 export default ru
-export type Translations = typeof ru

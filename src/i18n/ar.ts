@@ -126,6 +126,9 @@ const ar: Translations = {
     stalls: "{{count}} محلات",
     navigate: "توجيه",
   },
+  locations: {
+    empty: "لا توجد مواقع",
+  },
 }
 
 export default ar

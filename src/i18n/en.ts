@@ -128,6 +128,9 @@ const en = {
     stalls: "{{count}} stalls",
     navigate: "Navigate",
   },
+  locations: {
+    empty: "No locations found.",
+  },
 }
 
 export default en

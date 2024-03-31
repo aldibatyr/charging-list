@@ -129,6 +129,9 @@ const ko: Translations = {
     stalls: "{{count}} 개의 상점",
     navigate: "길찾기",
   },
+  locations: {
+    empty: "위치가 없습니다.",
+  },
 }
 
 export default ko

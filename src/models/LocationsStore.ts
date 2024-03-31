@@ -13,7 +13,6 @@ export const LocationsStoreModel = types
   .actions((store) => ({
     async fetchLocations() {
       const response = await api.getLocations()
-      console.log("response", response)
       if (response.kind === "ok") {
         store.setProp("locations", response.locations)
       } else {
