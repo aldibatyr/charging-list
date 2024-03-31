@@ -1,71 +1,77 @@
+import React from "react"
+import { TextStyle, ViewStyle } from "react-native"
+
 import { router } from "expo-router"
 import { observer } from "mobx-react-lite"
-import React, { ComponentType, useEffect, useMemo, useRef, useState } from "react"
-import { TextInput, TextStyle, ViewStyle } from "react-native"
-import { Button, Icon, Screen, Text, TextField, TextFieldAccessoryProps } from "src/components"
+import { Button, Screen, Text } from "src/components"
 import { useStores } from "src/models"
-import { colors, spacing } from "src/theme"
+import { spacing } from "src/theme"
 
 export default observer(function Login(_props) {
-  const authPasswordInput = useRef<TextInput>(null)
+  // const authPasswordInput = useRef<TextInput>(null)
 
-  const [authPassword, setAuthPassword] = useState("")
-  const [isAuthPasswordHidden, setIsAuthPasswordHidden] = useState(true)
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [attemptsCount, setAttemptsCount] = useState(0)
+  // const [authPassword, setAuthPassword] = useState("")
+  // const [isAuthPasswordHidden, setIsAuthPasswordHidden] = useState(true)
+  // const [isSubmitted, setIsSubmitted] = useState(false)
+  // const [attemptsCount, setAttemptsCount] = useState(0)
   const {
-    authenticationStore: { authEmail, setAuthEmail, setAuthToken, validationError },
+    authenticationStore: { setAnonMode },
   } = useStores()
 
-  useEffect(() => {
-    // Here is where you could fetch credentials from keychain or storage
-    // and pre-fill the form fields.
-    setAuthEmail("ignite@infinite.red")
-    setAuthPassword("ign1teIsAwes0m3")
+  // useEffect(() => {
+  //   // Here is where you could fetch credentials from keychain or storage
+  //   // and pre-fill the form fields.
+  //   setAuthEmail("ignite@infinite.red")
+  //   setAuthPassword("ign1teIsAwes0m3")
 
-    // Return a "cleanup" function that React will run when the component unmounts
-    return () => {
-      setAuthPassword("")
-      setAuthEmail("")
-    }
-  }, [])
+  //   // Return a "cleanup" function that React will run when the component unmounts
+  //   return () => {
+  //     setAuthPassword("")
+  //     setAuthEmail("")
+  //   }
+  // }, [])
 
-  const error = isSubmitted ? validationError : ""
+  // const error = isSubmitted ? validationError : ""
 
-  function login() {
-    setIsSubmitted(true)
-    setAttemptsCount(attemptsCount + 1)
+  // function login() {
+  //   setIsSubmitted(true)
+  //   setAttemptsCount(attemptsCount + 1)
 
-    if (validationError) return
+  //   if (validationError) return
 
-    // Make a request to your server to get an authentication token.
-    // If successful, reset the fields and set the token.
-    setIsSubmitted(false)
-    setAuthPassword("")
-    setAuthEmail("")
+  //   // Make a request to your server to get an authentication token.
+  //   // If successful, reset the fields and set the token.
+  //   setIsSubmitted(false)
+  //   setAuthPassword("")
+  //   setAuthEmail("")
 
-    // We'll mock this with a fake token.
-    setAuthToken(String(Date.now()))
+  //   // We'll mock this with a fake token.
+  //   setAuthToken(String(Date.now()))
 
-    // navigate to the main screen
+  //   // navigate to the main screen
+  //   router.replace("/")
+  // }
+
+  // const PasswordRightAccessory: ComponentType<TextFieldAccessoryProps> = useMemo(
+  //   () =>
+  //     function PasswordRightAccessory(props: TextFieldAccessoryProps) {
+  //       return (
+  //         <Icon
+  //           icon={isAuthPasswordHidden ? "view" : "hidden"}
+  //           color={colors.palette.neutral800}
+  //           containerStyle={props.style}
+  //           size={20}
+  //           onPress={() => setIsAuthPasswordHidden(!isAuthPasswordHidden)}
+  //         />
+  //       )
+  //     },
+  //   [isAuthPasswordHidden],
+  // )
+
+  const handleAnonLogin = () => {
+    setAnonMode(true)
     router.replace("/")
   }
-
-  const PasswordRightAccessory: ComponentType<TextFieldAccessoryProps> = useMemo(
-    () =>
-      function PasswordRightAccessory(props: TextFieldAccessoryProps) {
-        return (
-          <Icon
-            icon={isAuthPasswordHidden ? "view" : "hidden"}
-            color={colors.palette.neutral800}
-            containerStyle={props.style}
-            size={20}
-            onPress={() => setIsAuthPasswordHidden(!isAuthPasswordHidden)}
-          />
-        )
-      },
-    [isAuthPasswordHidden],
-  )
 
   return (
     <Screen
@@ -74,7 +80,7 @@ export default observer(function Login(_props) {
       safeAreaEdges={["top", "bottom"]}
     >
       <Text testID="login-heading" tx="loginScreen.signIn" preset="heading" style={$signIn} />
-      <Text tx="loginScreen.enterDetails" preset="subheading" style={$enterDetails} />
+      {/* <Text tx="loginScreen.enterDetails" preset="subheading" style={$enterDetails} />
       {attemptsCount > 2 && <Text tx="loginScreen.hint" size="sm" weight="light" style={$hint} />}
 
       <TextField
@@ -113,6 +119,13 @@ export default observer(function Login(_props) {
         style={$tapButton}
         preset="reversed"
         onPress={login}
+      /> */}
+
+      <Button
+        testID="login-anon-button"
+        tx="loginScreen.tapToEnterAnon"
+        style={$tapButton}
+        onPress={handleAnonLogin}
       />
     </Screen>
   )
@@ -121,24 +134,26 @@ export default observer(function Login(_props) {
 const $screenContentContainer: ViewStyle = {
   paddingVertical: spacing.xxl,
   paddingHorizontal: spacing.lg,
+  alignItems: "center",
+  justifyContent: "center",
 }
 
 const $signIn: TextStyle = {
   marginBottom: spacing.sm,
 }
 
-const $enterDetails: TextStyle = {
-  marginBottom: spacing.lg,
-}
+// const $enterDetails: TextStyle = {
+//   marginBottom: spacing.lg,
+// }
 
-const $hint: TextStyle = {
-  color: colors.tint,
-  marginBottom: spacing.md,
-}
+// const $hint: TextStyle = {
+//   color: colors.tint,
+//   marginBottom: spacing.md,
+// }
 
-const $textField: ViewStyle = {
-  marginBottom: spacing.lg,
-}
+// const $textField: ViewStyle = {
+//   marginBottom: spacing.lg,
+// }
 
 const $tapButton: ViewStyle = {
   marginTop: spacing.xs,

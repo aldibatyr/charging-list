@@ -1,9 +1,11 @@
 /* eslint-disable react/jsx-key, react-native/no-inline-styles */
 import React from "react"
+
+import { Demo } from "."
+
 import { EmptyState } from "../../../components"
 import { colors } from "../../../theme"
 import { DemoDivider } from "../DemoDivider"
-import { Demo } from "."
 import { DemoUseCase } from "../DemoUseCase"
 
 export const DemoEmptyState: Demo = {

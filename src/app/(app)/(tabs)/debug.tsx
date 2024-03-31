@@ -1,10 +1,11 @@
 import React from "react"
-import * as Application from "expo-application"
 import { Linking, Platform, TextStyle, View, ViewStyle } from "react-native"
+
+import * as Application from "expo-application"
 import { Button, ListItem, Screen, Text } from "src/components"
-import { colors, spacing } from "src/theme"
 import { isRTL } from "src/i18n"
 import { useStores } from "src/models"
+import { colors, spacing } from "src/theme"
 
 function openLinkInBrowser(url: string) {
   Linking.canOpenURL(url).then((canOpen) => canOpen && Linking.openURL(url))

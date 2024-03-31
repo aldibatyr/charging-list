@@ -14,16 +14,18 @@ import {
   ViewProps,
   ViewStyle,
 } from "react-native"
+
 import Animated, {
   Extrapolation,
   interpolate,
   useAnimatedStyle,
   withTiming,
 } from "react-native-reanimated"
+import { isRTL } from "src/i18n"
+
 import { colors, spacing } from "../theme"
 import { iconRegistry, IconTypes } from "./Icon"
 import { Text, TextProps } from "./Text"
-import { isRTL } from "src/i18n"
 
 type Variants = "checkbox" | "switch" | "radio"
 

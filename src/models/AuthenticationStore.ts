@@ -5,6 +5,7 @@ export const AuthenticationStoreModel = types
   .props({
     authToken: types.maybe(types.string),
     authEmail: "",
+    anonMode: false,
   })
   .views((store) => ({
     get isAuthenticated() {
@@ -17,6 +18,9 @@ export const AuthenticationStoreModel = types
         return "must be a valid email address"
       return ""
     },
+    get isAnonMode() {
+      return store.anonMode
+    },
   }))
   .actions((store) => ({
     setAuthToken(value?: string) {
@@ -28,6 +32,10 @@ export const AuthenticationStoreModel = types
     logout() {
       store.authToken = undefined
       store.authEmail = ""
+      store.anonMode = false
+    },
+    setAnonMode(value: boolean) {
+      store.anonMode = value
     },
   }))
 

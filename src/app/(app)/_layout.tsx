@@ -1,13 +1,14 @@
 import React from "react"
+
+import { useFonts } from "expo-font"
 import { Redirect, SplashScreen, Stack } from "expo-router"
 import { observer } from "mobx-react-lite"
 import { useStores } from "src/models"
-import { useFonts } from "expo-font"
 import { customFontsToLoad } from "src/theme"
 
 export default observer(function Layout() {
   const {
-    authenticationStore: { isAuthenticated },
+    authenticationStore: { anonMode },
   } = useStores()
 
   const [fontsLoaded, fontError] = useFonts(customFontsToLoad)
@@ -23,9 +24,23 @@ export default observer(function Layout() {
     return null
   }
 
-  if (!isAuthenticated) {
+  if (!anonMode) {
     return <Redirect href="/log-in" />
   }
 
-  return <Stack screenOptions={{ headerShown: false }} />
+  return (
+    <Stack
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Stack.Screen name="(tabs)" />
+      <Stack.Screen
+        name="locations/[id]"
+        options={{
+          presentation: "modal",
+        }}
+      />
+    </Stack>
+  )
 })

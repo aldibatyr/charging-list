@@ -1,17 +1,19 @@
-import * as Localization from "expo-localization"
-import i18n from "i18n-js"
 import { I18nManager } from "react-native"
 
+import * as Localization from "expo-localization"
+import i18n from "i18n-js"
+
+import ar from "./ar"
 // if English isn't your default language, move Translations to the appropriate language file.
 import en, { Translations } from "./en"
-import ar from "./ar"
-import ko from "./ko"
 import fr from "./fr"
+import ko from "./ko"
+import ru from "./ru"
 
 i18n.fallbacks = true
 
 // to use regional locales use { "en-US": enUS } etc
-i18n.translations = { ar, en, "en-US": en, ko, fr }
+i18n.translations = { ar, en, "en-US": en, ko, fr, ru }
 
 const fallbackLocale = "en-US"
 const systemLocale = Localization.getLocales()[0]

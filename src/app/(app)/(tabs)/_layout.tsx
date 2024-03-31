@@ -1,11 +1,13 @@
 import React from "react"
+import { TextStyle, ViewStyle } from "react-native"
+
+import { Entypo } from "@expo/vector-icons"
 import { Tabs } from "expo-router/tabs"
 import { observer } from "mobx-react-lite"
+import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { Icon } from "src/components"
 import { translate } from "src/i18n"
 import { colors, spacing, typography } from "src/theme"
-import { TextStyle, ViewStyle } from "react-native"
-import { useSafeAreaInsets } from "react-native-safe-area-context"
 
 export default observer(function Layout() {
   const { bottom } = useSafeAreaInsets()
@@ -23,50 +25,40 @@ export default observer(function Layout() {
       }}
     >
       <Tabs.Screen
-        name="showroom"
+        name="map"
         options={{
-          href: "/showroom",
+          href: "/map",
           headerShown: false,
-          tabBarLabel: translate("demoNavigator.componentsTab"),
+          tabBarLabel: translate("navigator.mapTab"),
           tabBarIcon: ({ focused }) => (
-            <Icon icon="components" color={focused ? colors.tint : undefined} size={30} />
+            <Entypo name="map" size={30} color={focused ? colors.tint : undefined} />
           ),
         }}
       />
-      <Tabs.Screen
-        name="community"
+      {/* <Tabs.Screen
+        name="list"
         options={{
-          href: "/community",
-          headerShown: false,
-          tabBarLabel: translate("demoNavigator.communityTab"),
+          href: "/list",
+          headerShown: true,
+          tabBarLabel: translate("navigator.listTab"),
           tabBarIcon: ({ focused }) => (
-            <Icon icon="community" color={focused ? colors.tint : undefined} size={30} />
+            <Entypo name="list" size={30} color={focused ? colors.tint : undefined} />
           ),
         }}
-      />
-      <Tabs.Screen
-        name="podcasts"
-        options={{
-          href: "/podcasts",
-          headerShown: false,
-          tabBarAccessibilityLabel: translate("demoNavigator.podcastListTab"),
-          tabBarLabel: translate("demoNavigator.podcastListTab"),
-          tabBarIcon: ({ focused }) => (
-            <Icon icon="podcast" color={focused ? colors.tint : undefined} size={30} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="debug"
-        options={{
-          href: "/debug",
-          headerShown: false,
-          tabBarLabel: translate("demoNavigator.debugTab"),
-          tabBarIcon: ({ focused }) => (
-            <Icon icon="debug" color={focused ? colors.tint : undefined} size={30} />
-          ),
-        }}
-      />
+      /> */}
+      {__DEV__ && (
+        <Tabs.Screen
+          name="debug"
+          options={{
+            href: "/debug",
+            headerShown: false,
+            tabBarLabel: translate("demoNavigator.debugTab"),
+            tabBarIcon: ({ focused }) => (
+              <Icon icon="debug" color={focused ? colors.tint : undefined} size={30} />
+            ),
+          }}
+        />
+      )}
     </Tabs>
   )
 })

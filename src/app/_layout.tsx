@@ -1,5 +1,6 @@
 // app/_layout.tsx
 import React from "react"
+
 import { Slot, SplashScreen } from "expo-router"
 import { useInitialRootStore } from "src/models"
 

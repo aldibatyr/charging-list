@@ -8,6 +8,7 @@ import {
   ViewProps,
   ViewStyle,
 } from "react-native"
+
 import { colors, spacing } from "../theme"
 import { Text, TextProps } from "./Text"
 

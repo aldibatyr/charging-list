@@ -7,8 +7,8 @@ const en = {
   },
   welcomeScreen: {
     postscript:
-      "psst  — This probably isn't what your app looks like. (Unless your designer handed you these screens, and in that case, ship it!)",
-    readyForLaunch: "Your app, almost ready for launch!",
+      "The list might be incomplete so you might want to let us know if any of the data is out of date. Always happy to receive your feedback!",
+    readyForLaunch: "You are about to see all charging points!",
     exciting: "(ohh, this is exciting!)",
     letsGo: "Let's go!",
   },
@@ -40,6 +40,11 @@ const en = {
     passwordFieldPlaceholder: "Super secret password here",
     tapToSignIn: "Tap to sign in!",
     hint: "Hint: you can use any email address and your favorite password :)",
+    tapToEnterAnon: "Tap to enter Anon Mode",
+  },
+  navigator: {
+    mapTab: "Map",
+    listTab: "List",
   },
   demoNavigator: {
     componentsTab: "Components",
@@ -118,6 +123,10 @@ const en = {
       content:
         "No favorites have been added yet. Tap the heart on an episode to add it to your favorites!",
     },
+  },
+  location: {
+    stalls: "{{count}} stalls",
+    navigate: "Navigate",
   },
 }
 

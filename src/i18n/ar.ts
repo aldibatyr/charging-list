@@ -42,6 +42,11 @@ const ar: Translations = {
     passwordFieldPlaceholder: "كلمة السر هنا فائقة السر",
     tapToSignIn: "انقر لتسجيل الدخول!",
     hint: "(: تلميح: يمكنك استخدام اي عنوان بريد الكتروني وكلمة السر المفضلة لديك",
+    tapToEnterAnon: "انقر للدخول في وضع الاسم المستعار",
+  },
+  navigator: {
+    mapTab: "الخريطة",
+    listTab: "القائمة",
   },
   demoNavigator: {
     componentsTab: "عناصر",
@@ -116,6 +121,10 @@ const ar: Translations = {
       content:
         "لم تتم اضافة اي مفضلات حتى الان. اضغط على القلب في إحدى الحلقات لإضافته الى المفضلة.",
     },
+  },
+  location: {
+    stalls: "{{count}} محلات",
+    navigate: "توجيه",
   },
 }
 

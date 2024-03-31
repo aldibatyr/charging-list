@@ -1,9 +1,11 @@
 /* eslint-disable react/jsx-key, react-native/no-inline-styles */
 import React from "react"
 import { TextStyle, View, ViewStyle } from "react-native"
+
+import { Demo } from "."
+
 import { Header, Icon } from "../../../components"
 import { colors } from "../../../theme"
-import { Demo } from "."
 import { DemoDivider } from "../DemoDivider"
 import { DemoUseCase } from "../DemoUseCase"
 

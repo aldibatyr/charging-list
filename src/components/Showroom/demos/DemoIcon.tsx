@@ -1,9 +1,11 @@
 /* eslint-disable react/jsx-key */
 import React from "react"
 import { ImageStyle, TextStyle, View, ViewStyle } from "react-native"
+
+import { Demo } from "."
+
 import { Icon, iconRegistry, IconTypes, Text } from "../../../components"
 import { colors, spacing } from "../../../theme"
-import { Demo } from "."
 import { DemoUseCase } from "../DemoUseCase"
 
 const $demoIconContainer: ViewStyle = {

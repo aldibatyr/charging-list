@@ -1,7 +1,8 @@
-import { router } from "expo-router"
-import { observer } from "mobx-react-lite"
 import React from "react"
 import { Image, ImageStyle, TextStyle, View, ViewStyle } from "react-native"
+
+import { router } from "expo-router"
+import { observer } from "mobx-react-lite"
 import { Button, Text } from "src/components"
 import { isRTL } from "src/i18n"
 import { useStores } from "src/models"
@@ -9,7 +10,6 @@ import { colors, spacing } from "src/theme"
 import { useHeader } from "src/utils/useHeader"
 import { useSafeAreaInsetsStyle } from "src/utils/useSafeAreaInsetsStyle"
 
-const welcomeLogo = require("assets/images/logo.png")
 const welcomeFace = require("assets/images/welcome-face.png")
 
 export default observer(function WelcomeScreen() {
@@ -18,7 +18,7 @@ export default observer(function WelcomeScreen() {
   } = useStores()
 
   function goNext() {
-    router.replace("/showroom")
+    router.replace("/map")
   }
 
   useHeader(
@@ -34,7 +34,6 @@ export default observer(function WelcomeScreen() {
   return (
     <View style={$container}>
       <View style={$topContainer}>
-        <Image style={$welcomeLogo} source={welcomeLogo} resizeMode="contain" />
         <Text
           testID="welcome-heading"
           style={$welcomeHeading}
@@ -80,11 +79,6 @@ const $bottomContainer: ViewStyle = {
   borderTopRightRadius: 16,
   paddingHorizontal: spacing.lg,
   justifyContent: "space-around",
-}
-const $welcomeLogo: ImageStyle = {
-  height: 88,
-  width: "100%",
-  marginBottom: spacing.xxl,
 }
 
 const $welcomeFace: ImageStyle = {

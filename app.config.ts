@@ -8,7 +8,7 @@ require("ts-node/register")
 
 /**
  * @param config ExpoConfig coming from the static config app.json if it exists
- * 
+ *
  * You can read more about Expo's Configuration Resolution Rules here:
  * https://docs.expo.dev/workflow/configuration/#configuration-resolution-rules
  */
@@ -21,6 +21,15 @@ module.exports = ({ config }: ConfigContext): Partial<ExpoConfig> => {
       ...existingPlugins,
       require("./plugins/withSplashScreen").withSplashScreen,
       require("./plugins/withFlipperDisabled").withFlipperDisabled,
+      [
+        require("./plugins/withRequiredHardware").withRequiredHardware,
+        {
+          // More info: https://developer.apple.com/documentation/bundleresources/information_property_list/uirequireddevicecapabilities/
+          ios: ["location-services"],
+          // More info: https://developer.android.com/guide/topics/manifest/uses-feature-element
+          android: ["android.hardware.location"],
+        },
+      ],
     ],
   }
 }

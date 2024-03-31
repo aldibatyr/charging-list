@@ -42,6 +42,11 @@ const ko: Translations = {
     passwordFieldPlaceholder: "엄청 비밀스러운 암호를 입력하세요",
     tapToSignIn: "눌러서 로그인 하기!",
     hint: "힌트: 가장 좋아하는 암호와 아무런 아무 이메일 주소나 사용할 수 있어요 :)",
+    tapToEnterAnon: "익명 모드로 들어가기",
+  },
+  navigator: {
+    mapTab: "지도",
+    listTab: "목록",
   },
   demoNavigator: {
     componentsTab: "컴포넌트",
@@ -119,6 +124,10 @@ const ko: Translations = {
       heading: "조금 텅 비어 있네요.",
       content: "즐겨찾기가 없습니다. 에피소드에 있는 하트를 눌러서 즐겨찾기에 추가하세요.",
     },
+  },
+  location: {
+    stalls: "{{count}} 개의 상점",
+    navigate: "길찾기",
   },
 }
 

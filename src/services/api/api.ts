@@ -5,11 +5,17 @@
  * See the [Backend API Integration](https://docs.infinite.red/ignite-cli/boilerplate/app/services/Services.md)
  * documentation for more details.
  */
+
+import type { EpisodeSnapshotIn } from "../../models/Episode"
+import type { ApiConfig, ApiFeedResponse, ChargingPortType } from "./api.types"
+
 import { ApiResponse, ApisauceInstance, create } from "apisauce"
+import { LocationSnapshotIn } from "src/models"
+import { generatePostgressError } from "src/services/api/postgressError"
+import { supabase } from "src/services/supabase"
+
 import Config from "../../config"
 import { GeneralApiProblem, getGeneralApiProblem } from "./apiProblem"
-import type { ApiConfig, ApiFeedResponse } from "./api.types"
-import type { EpisodeSnapshotIn } from "../../models/Episode"
 
 /**
  * Configuring the apisauce instance.
@@ -70,6 +76,50 @@ export class Api {
     } catch (e) {
       if (__DEV__ && e instanceof Error) {
         console.error(`Bad data: ${e.message}\n${response.data}`, e.stack)
+      }
+      return { kind: "bad-data" }
+    }
+  }
+
+  async getLocations(): Promise<
+    { kind: "ok"; locations: LocationSnapshotIn[] } | GeneralApiProblem
+  > {
+    // make the api call
+
+    // eslint-disable-next-line camelcase
+    const { data: charging_points, error } = await supabase.from("charging_points").select("*")
+
+    // the typical ways to die when calling an api
+    if (error) {
+      const problem = generatePostgressError(error)
+      if (problem) return { kind: "bad-data" }
+    }
+
+    try {
+      // eslint-disable-next-line camelcase
+      const rawData = charging_points
+
+      // This is where we transform the data into the shape we expect for our MST model.
+      const locations: LocationSnapshotIn[] =
+        rawData?.map((raw) => ({
+          id: raw.id,
+          name: raw.name ?? "",
+          company: raw.company ?? "",
+          address: raw.address ?? "",
+          latitude: raw.latitude ?? 0,
+          longitude: raw.longitude ?? 0,
+          inserted_at: raw.inserted_at ?? "",
+          updated_at: raw.updated_at ?? "",
+          porttype: (raw.porttype as ChargingPortType[]) ?? [],
+          stalls_count: raw.stalls_count ?? 0,
+          power_output: raw.power_output ?? [0],
+          provider_app_link: raw.provider_app_link ?? "",
+        })) ?? []
+
+      return { kind: "ok", locations }
+    } catch (e) {
+      if (__DEV__ && e instanceof Error) {
+        console.error(`Bad data: ${e.message}\n${error?.hint}`, e.stack)
       }
       return { kind: "bad-data" }
     }

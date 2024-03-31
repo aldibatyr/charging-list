@@ -43,6 +43,11 @@ const fr: Translations = {
     passwordFieldPlaceholder: "Mot de passe super secret ici",
     tapToSignIn: "Appuyez pour vous connecter !",
     hint: "Astuce : vous pouvez utiliser n'importe quelle adresse e-mail et votre mot de passe préféré :)",
+    tapToEnterAnon: "Appuyez pour entrer en mode Anon",
+  },
+  navigator: {
+    mapTab: "Carte",
+    listTab: "Liste",
   },
   demoNavigator: {
     componentsTab: "Composants",
@@ -122,6 +127,10 @@ const fr: Translations = {
       content:
         "Aucun favori n'a été ajouté pour le moment. Appuyez sur le cœur d'un épisode pour l'ajouter à vos favoris !",
     },
+  },
+  location: {
+    stalls: "{{count}} stands",
+    navigate: "Naviguer",
   },
 }
 
