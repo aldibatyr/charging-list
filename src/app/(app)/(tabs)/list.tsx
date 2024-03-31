@@ -69,7 +69,3 @@ const $listItemContainer: ViewStyle = {
   borderRadius: spacing.md,
   padding: spacing.md,
 }
-
-const $card: ViewStyle = {
-  padding: spacing.md,
-}
